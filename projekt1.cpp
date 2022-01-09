@@ -4,9 +4,9 @@
 int main() {
 
 
-	Launch test;
+	Launch launch;
 
-	test.game_loop();
+	launch.game();
 
 	return 0;
 }

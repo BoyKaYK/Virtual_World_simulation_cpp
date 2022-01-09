@@ -23,7 +23,8 @@ public:
 
 	Launch();
 
-	void game_loop();
+	void game();
+	void empty_world();
 	void main_menu();
 	void set_simulation_running(bool set);
 

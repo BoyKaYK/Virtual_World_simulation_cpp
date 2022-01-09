@@ -15,7 +15,7 @@ Ciern::~Ciern() {
 }
 
 void Ciern::rysowanie() {
-	std::cout << "C";
+	cout << "C";
 }
 
 void Ciern::akcja() {

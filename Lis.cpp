@@ -1,6 +1,7 @@
 #include "Lis.h"
 #include <iostream>
 
+using namespace std;
 Lis::Lis() {
 	this->strength = 3;
 	this->initiative = 7;
@@ -30,7 +31,7 @@ void Lis::akcja() {
 
 	while (!mozna_wykonac) {
 		kierunek_ruchu = std::rand() % 4;
-		//std::cout << kierunek_ruchu << '\n';
+		
 		if (kierunek_ruchu == 0) { // gora
 			x_dir = this->x;
 			y_dir = this->y - 1;
@@ -64,7 +65,7 @@ void Lis::akcja() {
 			continue;
 		}
 		else if (swiat->organizmy_swiat[y_dir][x_dir]) { // kolizja
-			//std::cout << "kolizja " << this->name << ' ' << this->x << ' ' << this->y << " z " << x_dir << ' ' << y_dir <<'\n';
+			
 			Organizm* oponent = NULL;
 			for (int q = 0; q < swiat->liczba_organizmow; ++q) {
 				if (swiat->organizmy[q]->get_x() == x_dir && swiat->organizmy[q]->get_y() == y_dir) {
@@ -72,6 +73,9 @@ void Lis::akcja() {
 					break;
 				}
 			}
+
+			cout << "Kolizja " << this->name << ' ' << this->x << ' ' << this->y << " z " << oponent->get_name() << '\n';
+
 			if (oponent->get_strength() > this->strength) {
 				dostepne_kierunki[kierunek_ruchu] = false;
 				continue;
@@ -90,9 +94,9 @@ void Lis::akcja() {
 		}
 	}
 	if (zyje) {
-		//std::cout << this->name << " kierunek ruchu " << x_dir << ' ' << y_dir << '\n';
-		swiat->organizmy_swiat[y_dir][x_dir] = true;
-		swiat->organizmy_swiat[y][x] = false;
+		
+		swiat->organizmy_swiat[y_dir][x_dir] = true; // nowe x y 
+		swiat->organizmy_swiat[y][x] = false; // poprzednie miejsce 
 
 		this->x = x_dir;
 		this->y = y_dir;
@@ -101,5 +105,5 @@ void Lis::akcja() {
 
 
 void Lis::rysowanie() {
-	std::cout << "L";
+	cout << "L";
 }

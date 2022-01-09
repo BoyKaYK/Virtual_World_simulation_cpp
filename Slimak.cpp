@@ -1,6 +1,9 @@
 #include "Slimak.h"
 #include <iostream>
 
+
+using namespace std;
+
 Slimak::Slimak() {
 	this->strength = 1;
 	this->initiative = 1;
@@ -25,10 +28,10 @@ void Slimak::akcja() {
 	bool mozna_wykonac = false;
 	bool zyje = true;
 	bool dostepne_kierunki[4] = { 1 , 1, 1 , 1 };
-	if (rand() % 10 == 0) {
+	if (rand() % 10 == 0) { // 10% na pokonanie ruchu 
 		while (!mozna_wykonac) {
 			kierunek_ruchu = std::rand() % 4;
-			//std::cout << kierunek_ruchu << '\n';
+			
 			if (kierunek_ruchu == 0) { // gora
 				x_dir = this->x;
 				y_dir = this->y - 1;
@@ -63,7 +66,8 @@ void Slimak::akcja() {
 				continue;
 			}
 			else if (swiat->organizmy_swiat[y_dir][x_dir]) { // kolizja
-				//std::cout << "kolizja " << this->name << ' ' << this->x << ' ' << this->y << " z " << x_dir << ' ' << y_dir <<'\n';
+
+				
 				Organizm* oponent = NULL;
 				for (int q = 0; q < swiat->liczba_organizmow; ++q) {
 					if (swiat->organizmy[q]->get_x() == x_dir && swiat->organizmy[q]->get_y() == y_dir) {
@@ -71,6 +75,9 @@ void Slimak::akcja() {
 						break;
 					}
 				}
+
+				cout << "kolizja " << this->name << ' ' << this->x << ' ' << this->y << " z " << oponent->get_name() << '\n';
+
 				if (oponent->get_strength() > this->strength + 1) {
 					dostepne_kierunki[kierunek_ruchu] = false;
 					continue;
@@ -101,5 +108,5 @@ void Slimak::akcja() {
 }
 
 void Slimak::rysowanie() {
-	std::cout << "S";
+	cout << "S";
 }

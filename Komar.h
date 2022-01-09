@@ -6,5 +6,5 @@ public:
 	void rysowanie();
 	void akcja();
 	void add_sila(int x);
-	bool reakcja_na_atak(Organizm* atakujacy);
+	
 };

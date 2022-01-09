@@ -8,12 +8,74 @@ using namespace std;
 #define LICZBA_TUR 50
 
 Launch::Launch(){
-	main_menu();
+	main_menu(); // launch konstruktor
 	swiat = new Swiat(rozm_x, rozm_y);
 	
 }
+void Launch::empty_world() {
+	
+	/*Organizm* wilk = new Wilk(0, 1);
+	swiat->dodaj_organizm(wilk);
 
-void Launch::game_loop() {
+
+	Organizm* wilk1 = new Wilk(0, 2);
+	swiat->dodaj_organizm(wilk1);
+
+	
+	Organizm* owca = new Owca(0,2 );
+	swiat->dodaj_organizm(owca);
+
+	Organizm* trawa = new Trawa(0, 3);
+	swiat->dodaj_organizm(trawa);
+
+	Organizm* lis = new Lis(0, 4);
+	swiat->dodaj_organizm(lis);
+
+	Organizm* slimak = new Slimak(0, 5);
+	swiat->dodaj_organizm(slimak);
+	//swiat->usun_organizm(slimak);
+
+	Organizm* komar = new Komar(0,6);
+	swiat->dodaj_organizm(komar);
+	//swiat->usun_organizm(komar);
+
+	Organizm* guarana = new Guarana(0,7 );
+	swiat->dodaj_organizm(guarana);
+	//swiat->usun_organizm(guarana);
+
+	Organizm* ciern = new Ciern(0,8 );
+	swiat->dodaj_organizm(ciern);
+	//swiat->usun_organizm(ciern);
+	*/
+
+	swiat->rysuj_swiat();
+
+	//swiat->print_organizmy();
+
+	cout << "------------\n";
+	cout << '\n';
+
+	int next_tura = 1;
+
+	for (int i = 0; i < LICZBA_TUR; i++) {  //urutury 
+
+		if (!swiat->koniec && next_tura != 0) {
+
+			swiat->wykonaj_ture();
+
+			cout << "\n Dla nastepnej tury wpisz '1' \n Dla zakonczenia wpisz '0' ";
+
+			cin >> next_tura;
+
+		}
+		else {
+
+			break;
+		}
+	}
+
+}
+void Launch::game() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 	
@@ -155,7 +217,7 @@ void Launch::game_loop() {
 		}
         
 		cout << " \n Wygenerowano organizmy : \n";
-		swiat->print_organizmy();
+		//swiat->print_organizmy();
 		
 		swiat->rysuj_swiat();
 		
@@ -168,13 +230,14 @@ void Launch::game_loop() {
 	int next_tura = 1;
 	
 		for (int i = 0; i < LICZBA_TUR; i++) {  //urutury 
+			
 			if (!swiat->koniec && next_tura != 0) {
-				cout << "\n Dla nastepnej tury wpisz '1' \n Dla zakonczenia wpisz '0' ";
 				
-				cin >> next_tura;
 				swiat->wykonaj_ture();
-				
-				
+
+				cout << "\n Dla nastepnej tury wpisz '1' \n Dla zakonczenia wpisz '0' ";
+
+				cin >> next_tura;
 				
 			}
 			else {
@@ -189,14 +252,14 @@ void Launch::game_loop() {
 
 void Launch::main_menu() {
 
-
-
 	cout << "				  Autor: Yevhenii Kasian 187783	\n\n";
 
 	
-	cout << " Wybierz rozmiar swiata ( x, y ) \n";
+	cout << " Wpisz rozmiar swiata :  \n" << '\t';
 	
-	cin >> rozm_x >> rozm_y;
+	cin >> rozm_y;
+
+	
 
 }
 

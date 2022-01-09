@@ -1,6 +1,7 @@
 #include "Roslina.h"
 #include "Trawa.h"
 #include "Guarana.h"
+#include "Ciern.h"
 
 
 void Roslina::rozprzestrzeniaj() {
@@ -28,10 +29,10 @@ void Roslina::rozprzestrzeniaj() {
 		}
 
 		if (swiat->is_border(x_dir, y_dir, swiat->get_rozmiar_y(), swiat->get_rozmiar_x()) || swiat->organizmy_swiat[y_dir][x_dir]) {
-
+			// niema miejsca
 		}
 		else {
-			//std::cout << "dziecko na " << x_dir << ' ' << y_dir << '\n';
+			//dziecko na  x_dir y_dir 
 			mozna_wykonac = true;
 			break;
 		}
@@ -42,19 +43,17 @@ void Roslina::rozprzestrzeniaj() {
 		if (this->name == "Trawa") {
 			dziecko = new Trawa(y_dir, x_dir);
 		}
-		/*else if (this->name == "Mlecz") {
-			dziecko = new Mlecz(y_dir, x_dir);
-		}*/
 		else if (this->name == "Guarana") {
 			dziecko = new Guarana(y_dir, x_dir);
 		}
-		/*else if (this->name == "Wilcze Jagody") {
-			dziecko = new WilczeJagody(y_dir, x_dir);
-		}*/
+		else if (this->name == "Ciern") {
+			dziecko = new Ciern(y_dir, x_dir);
+		}
 		else {
 			dziecko = new Trawa(y_dir, x_dir);
 		}
 		swiat->dodaj_organizm(dziecko, 1);
+		cout << " Rozprzestrzeniono :" << dziecko->get_name() << '\n';
 		swiat->zwiekszona_liczba_organizmow = true;
 		swiat->sortuj_wektor();
 	}
@@ -64,18 +63,18 @@ bool Roslina::kolizja(Organizm* z_kim) {
 	return false;
 }
 
-#define SZANSA_ROZPRZESTRZENIANIA 10
+const int szansa_rozprzestrzenienia = 10;
 
 void Roslina::akcja() {
 	short sprobuj;
 	sprobuj = rand() % 100;
-	if (sprobuj < SZANSA_ROZPRZESTRZENIANIA) {
+	if (sprobuj < szansa_rozprzestrzenienia) {
 		rozprzestrzeniaj();
 	}
 }
 
 void Roslina::byc_zjedzonym(Organizm* jedzacy) {
-	swiat->usun_organizm((Organizm*)this);
+	swiat->usun_organizm((Organizm*)this); // :(
 	swiat->zmniejszona_liczba_organizmow = true;
 }
 

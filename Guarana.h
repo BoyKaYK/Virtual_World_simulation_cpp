@@ -1,5 +1,7 @@
 #pragma once
 #include "Roslina.h"
+using namespace std;
+
 class Guarana : public Roslina {
 public:
 	Guarana(int y, int x);

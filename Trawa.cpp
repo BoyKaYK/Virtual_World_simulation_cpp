@@ -1,5 +1,6 @@
 #include "Trawa.h"
 
+using namespace std;
 Trawa::Trawa() {
 	
 }
@@ -18,5 +19,5 @@ Trawa::~Trawa() {
 }
 
 void Trawa::rysowanie() {
-	std::cout << "T";
+	cout << "T";
 }

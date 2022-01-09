@@ -1,8 +1,11 @@
 #include "Wilk.h"
 #include <iostream>
 
+
+using namespace std;
+
 Wilk::Wilk() {
-	//std::cout << "konstruktor wilka\n";
+	
 	this->strength = 9;
 	this->initiative = 5;
 	
@@ -22,5 +25,5 @@ Wilk::~Wilk() {
 }
 
 void Wilk::rysowanie() {
-	std::cout << "W";
+	cout << "W";
 }

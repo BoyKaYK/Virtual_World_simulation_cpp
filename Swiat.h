@@ -3,19 +3,19 @@
 #include "Organizm.h"
 #include "tabulate.hpp"
 
+using namespace std;
+
 class Swiat {
 
 	int rozmiar_swiata_y;
-	int rozmiar_swiata_x;
 	int tura_swiata = 0;
 
 public:
-	std::vector<Organizm*> organizmy;
+	vector<Organizm*> organizmy; //wektor z organizmow
 
 	tabulate::Table tabela_tur;
-	tabulate::Table tabela_wydarzen;
-
-	bool** organizmy_swiat;
+	
+	bool** organizmy_swiat; // sprawdzenie 
 
 	int liczba_organizmow;
 	Swiat(int rozmiar_x, int rozmiar_y);
@@ -25,17 +25,16 @@ public:
 	bool zmniejszona_liczba_organizmow = false;
 	bool zwiekszona_liczba_organizmow = false;
 
-	void dodaj_organizm(Organizm* org);//zwykle
-	void dodaj_organizm(Organizm* org, bool front); // od rozmnazania
+	void dodaj_organizm(Organizm* org);
+	void dodaj_organizm(Organizm* org, bool front); //
 	void usun_organizm(Organizm* org);
 
 	void print_organizmy();
 	
-	void dodaj_licznik_tur();
+	void licznik_tur();
 
 	bool koniec = false;
-	bool save_world = false;
-
+	
 	int get_rozmiar_y() const;
 	int get_rozmiar_x() const;
 	void set_rozmiar_x(int n);
@@ -43,7 +42,7 @@ public:
 	int get_tura() const;
 	void set_tura(int tura);
 
-	bool is_border(int x, int y, int r_y, int r_x);
+	bool is_border(int x, int y, int r_y, int r_x); // is granica swiata 
 
 	~Swiat();
 };
